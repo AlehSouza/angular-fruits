@@ -1,0 +1,10 @@
+<div class="content">
+    <div class="fruits">
+        <h1 class="title">Frutas direto na page</h1>
+        <ul>
+            @for (fruit of jsonFruits; track fruit) {
+                <li>{{fruit | json}}</li>
+            }
+        </ul>
+    </div>
+</div>

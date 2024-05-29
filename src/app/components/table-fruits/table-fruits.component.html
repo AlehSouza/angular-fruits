@@ -1,0 +1,25 @@
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>Quantidade</th>
+        <th>Peso</th>
+        <th>Valor (U)</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        @for (fruit of fruits; track fruit.name) {
+            <tr>
+                <td>{{fruit.name}}</td>
+                <td>{{fruit.quantity | quantity:12}}</td>
+                <td>{{fruit.weight | weight }}</td>
+                <td>{{fruit.value | currency: 'BRL'}}</td>
+                <td>
+                    <div class="flex group center">
+                        <button class="btn info">Editar</button>
+                        <button class="btn danger">Deletar</button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
