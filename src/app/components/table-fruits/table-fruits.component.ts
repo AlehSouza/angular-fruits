@@ -11,9 +11,8 @@ import { WeightPipe } from "../../pipes/weight.pipe";
     imports: [QuantityPipe, CommonModule, WeightPipe]
 })
 export class TableFruitsComponent implements OnInit{
-   @Input() fruits!: any []
-
-   ngOnInit(): void {
-    console.log(this.fruits)
+    @Input() fruits!: any []
+    
+    ngOnInit(): void {
     }
 }

@@ -3,14 +3,14 @@ import { FruitsService } from '../../services/fruits.service';
 import { TableFruitsComponent } from '../../components/table-fruits/table-fruits.component';
 
 @Component({
-  selector: 'app-tabela',
+  selector: 'app-table',
   standalone: true,
   imports: [TableFruitsComponent],
-  templateUrl: './tabela.component.html',
-  styleUrl: './tabela.component.scss'
+  templateUrl: './table.component.html',
+  styleUrl: './table.component.scss'
 })
 
-export class TabelaComponent implements OnInit{
+export class TableComponent implements OnInit{
 
   constructor( 
     public fruitsService: FruitsService
