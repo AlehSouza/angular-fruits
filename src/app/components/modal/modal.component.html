@@ -1,1 +1,21 @@
-<p>modal works!</p>
+@if(isOpen && selectedFruit){
+    <div class="modal-content">
+        <div class="modal-box">
+            <div class="btn-close">
+                <button (click)="handleOpen()">X</button>
+            </div>
+            <h1>Edite sua fruta 🍇</h1>
+            <label>Fruta</label>
+            <input type="text" class="input" [(ngModel)]="selectedFruit.name">
+            <label>Quantidade</label>
+            <input type="text" class="input" [(ngModel)]="selectedFruit.quantity">
+            <label>Peso</label>
+            <input type="text" class="input" [(ngModel)]="selectedFruit.weight">
+            <label>Valor</label>
+            <input type="text" class="input" [(ngModel)]="selectedFruit.value">
+            <button class="btn-full primary">
+                Atualizar
+            </button>
+        </div>
+    </div>  
+}

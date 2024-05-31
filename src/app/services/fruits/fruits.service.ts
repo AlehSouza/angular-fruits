@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Fruit } from '../schemas/fruit.schema';
+import { Fruit } from '../../schemas/fruit.schema';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +40,13 @@ export class FruitsService {
       value: 5.00
     }
   ]
+
+  selectedFruit!: Fruit;
+
+  selectFruit (fruit: Fruit) {
+    console.log(fruit)
+    this.selectedFruit = fruit
+  }
 
   getFruits() {
     return this.fruits

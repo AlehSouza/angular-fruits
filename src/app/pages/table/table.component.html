@@ -1,4 +1,5 @@
 <div class="content">
+    <app-modal #model ></app-modal>
     <h1 class="title">Frutas na tabela, by params</h1>
-    <app-table-fruits [fruits]="fruitsService.fruits"></app-table-fruits>
+    <app-table-fruits (toggleModal)="toggleModal($event)" [fruits]="fruitsService.fruits"></app-table-fruits>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FruitComponent } from '../../components/fruit/fruit.component';
 import { Fruit } from '../../schemas/fruit.schema';
-import { FruitsService } from '../../services/fruits.service';
+import { FruitsService } from '../../services/fruits/fruits.service';
 
 @Component({
   selector: 'app-params',

@@ -15,7 +15,7 @@
                 <td>{{fruit.value | currency: 'BRL'}}</td>
                 <td>
                     <div class="flex group center">
-                        <button class="btn info">Editar</button>
+                        <button class="btn info" (click)="handleSelectedFruit(fruit)">Editar</button>
                         <button class="btn danger">Deletar</button>
                     </div>
                 </td>

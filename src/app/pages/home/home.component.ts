@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { QuantityPipe } from "../../pipes/quantity.pipe";
 import { TableFruitsComponent } from '../../components/table-fruits/table-fruits.component';
 import { NavigationComponent } from '../../components/navigation/navigation.component';
-import { FruitsService } from '../../services/fruits.service';
+import { FruitsService } from '../../services/fruits/fruits.service';
 import { Fruit } from '../../schemas/fruit.schema';
 
 @Component({
