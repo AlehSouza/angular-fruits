@@ -4,16 +4,16 @@
             <div class="btn-close">
                 <button (click)="handleOpen()">X</button>
             </div>
-            <h1>Edite sua fruta 🍇</h1>
+            <h1>Editando 🍇</h1>
             <label>Fruta</label>
             <input type="text" class="input" [(ngModel)]="selectedFruit.name">
             <label>Quantidade</label>
-            <input type="text" class="input" [(ngModel)]="selectedFruit.quantity">
+            <input type="number" class="input" [(ngModel)]="selectedFruit.quantity">
             <label>Peso</label>
-            <input type="text" class="input" [(ngModel)]="selectedFruit.weight">
+            <input type="number" class="input" [(ngModel)]="selectedFruit.weight">
             <label>Valor</label>
-            <input type="text" class="input" [(ngModel)]="selectedFruit.value">
-            <button class="btn-full primary">
+            <input type="number" class="input" [(ngModel)]="selectedFruit.value">
+            <button class="btn-full primary" (click)="handleUpdate()">
                 Atualizar
             </button>
         </div>

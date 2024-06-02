@@ -1,31 +1,38 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FruitsService } from '../../services/fruits/fruits.service';
 import { TableFruitsComponent } from '../../components/table-fruits/table-fruits.component';
-import { ModalComponent } from '../../components/modal/modal.component';
+import { ModalUpdateComponent } from '../../components/modal-update/modal-update.component';
+import { ModalDeleteComponent } from '../../components/modal-delete/modal-delete.component';
+import { Fruit } from '../../schemas/fruit.schema';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [TableFruitsComponent, ModalComponent],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.scss'
+  styleUrl: './table.component.scss',
+  imports: [TableFruitsComponent, ModalUpdateComponent, ModalDeleteComponent]
 })
 
-export class TableComponent implements OnInit{
+export class TableComponent implements OnInit {
 
-  @ViewChild(ModalComponent) model!: ModalComponent
+  @ViewChild(ModalUpdateComponent) modalUpdate!: ModalUpdateComponent
+  @ViewChild(ModalDeleteComponent) modalDelete!: ModalDeleteComponent
 
-  constructor( 
+  constructor(
     public fruitsService: FruitsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
   }
 
-  toggleModal(event: any) {
-    console.log(event)
-    this.model.isOpen = !this.model.isOpen
-    this.model.selectedFruit = event
+  toggleModalUpdate(fruit: Fruit) {
+    this.modalUpdate.selectedFruit = fruit
+    this.modalUpdate.isOpen = !this.modalUpdate.isOpen
+  }
+
+  toggleModalDelete(fruit: Fruit) {
+    this.modalDelete.selectedFruit = fruit
+    this.modalDelete.isOpen = !this.modalDelete.isOpen
   }
 
 }

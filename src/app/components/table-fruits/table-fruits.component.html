@@ -4,20 +4,30 @@
         <th>Quantidade</th>
         <th>Peso</th>
         <th>Valor (U)</th>
+        <th>Status</th>
         <th>Actions</th>
     </thead>
     <tbody>
-        @for (fruit of fruits; track fruit.name) {
+        @if(fruits.length > 0){
+            @for (fruit of fruits; track fruit.name) {
+                <tr>
+                    <td>{{fruit.name}}</td>
+                    <td>{{fruit.quantity | quantity:12}}</td>
+                    <td>{{fruit.weight | weight }}</td>
+                    <td>{{fruit.value | currency: 'BRL'}}</td>
+                    <td>{{fruit.status | status }}</td>
+                    <td>
+                        <div class="flex group center">
+                            <button class="btn info" (click)="handleSelectedFruit(fruit)">Editar</button>
+                            <button class="btn danger" (click)="handleDeleteFruit(fruit)">Deletar</button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }@else {
             <tr>
-                <td>{{fruit.name}}</td>
-                <td>{{fruit.quantity | quantity:12}}</td>
-                <td>{{fruit.weight | weight }}</td>
-                <td>{{fruit.value | currency: 'BRL'}}</td>
-                <td>
-                    <div class="flex group center">
-                        <button class="btn info" (click)="handleSelectedFruit(fruit)">Editar</button>
-                        <button class="btn danger">Deletar</button>
-                    </div>
+                <td colspan="6">
+                    <p class="data-off">Sem dados cadastrados.</p>
                 </td>
             </tr>
         }
