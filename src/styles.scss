@@ -31,8 +31,19 @@
 .btn {
     padding: 8px;
     border: 0px;
+    text-align: center;
     border-radius: 12px;
-    display:  flex;
+    cursor: pointer;
+}
+
+.btn-full {
+    width: 100%;
+    padding: 12px;
+    border: 0px;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
 .primary {
@@ -57,4 +68,12 @@
     &:hover {
         background-color: #1162b8;
     }
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border:  1px solid rgb(191, 191, 191);
+    border-radius: 8px;
 }

@@ -1,0 +1,10 @@
+<div class="content">
+    <app-modal-update #modalUpdate></app-modal-update>
+    <app-modal-delete #modalDelete></app-modal-delete>
+    <h1 class="title">Frutas na tabela, by params</h1>
+    <app-table-fruits 
+        (toggleModalUpdateEmitter)="toggleModalUpdate($event)" 
+        (toggleModalDeleteEmitter)="toggleModalDelete($event)"
+        [fruits]="fruitsService.fruits"
+    ></app-table-fruits>
+</div>
