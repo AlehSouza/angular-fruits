@@ -1,4 +1,4 @@
-@if(isOpen && selectedFruit){
+@if(isOpen){
     <div class="modal-content">
         <div class="modal-box">
             <div class="btn-close">
@@ -6,13 +6,15 @@
             </div>
             <h1>Editando 🍇</h1>
             <label>Fruta</label>
-            <input type="text" class="input" [(ngModel)]="selectedFruit.name">
+            <input type="text" class="input" [formControl]="fruitForm.controls.name" placeholder="Ex: Avocado">
             <label>Quantidade</label>
-            <input type="number" class="input" [(ngModel)]="selectedFruit.quantity">
+            <input type="number" class="input" [formControl]="fruitForm.controls.quantity" placeholder="Ex: 10">
             <label>Peso</label>
-            <input type="number" class="input" [(ngModel)]="selectedFruit.weight">
+            <input type="number" class="input" [formControl]="fruitForm.controls.weight" placeholder="Ex: 200">
             <label>Valor</label>
-            <input type="number" class="input" [(ngModel)]="selectedFruit.value">
+            <input type="number" class="input" [formControl]="fruitForm.controls.value" placeholder="Ex: 5">
+            <label>Status</label>
+            <input type="checkbox" class="toggle" [formControl]="fruitForm.controls.status">
             <button class="btn-full primary" (click)="handleUpdate()">
                 Atualizar
             </button>

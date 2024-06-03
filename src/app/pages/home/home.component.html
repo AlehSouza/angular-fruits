@@ -1,3 +1,14 @@
 <div class="content">
     <h1 class="title">Data atual > {{currentDate | date: 'dd/mm/yyyy'}}</h1>
+
+    <button (click)="addAlias()">Adicionar</button>
+    @for (alias of exampleFormArray.controls.aliases.controls; track alias) {
+        {{$index}} | {{$first}} | {{$last}}
+        <br>
+        <input type="text" [formControl]="alias"> 
+        <br>
+        <button (click)="exampleFormArray.controls.aliases.removeAt($index)">Remover</button>
+        <hr>
+    }
+    
 </div>

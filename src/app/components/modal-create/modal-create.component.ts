@@ -10,25 +10,20 @@ import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } 
   templateUrl: './modal-create.component.html',
   styleUrl: './modal-create.component.scss'
 })
+
 export class ModalCreateComponent implements OnInit{
 
   constructor(
     private fruitsService: FruitsService
   ) { }
 
-  fruitForm = new FormGroup({
-    name: new FormControl<string>('', Validators.required),
-    quantity: new FormControl<number>(0, Validators.required),
-    weight: new FormControl<number>(0, Validators.required),
-    value: new FormControl<number>(0, Validators.required)
-  })
+  fruitForm = this.fruitsService.generateForm();
   
-  isOpen = false;
+  isOpen: boolean = false;
 
   newFruit!: Fruit;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   handleOpen() {
     this.isOpen = !this.isOpen
@@ -36,11 +31,10 @@ export class ModalCreateComponent implements OnInit{
 
   handleCreate() {
     const draft = {
-      ...this.fruitForm.value,
-      status: true,
+      ...this.fruitForm.getRawValue(),
       id: this.fruitsService.fruits.length,
     }
     this.handleOpen()
-    this.fruitsService.createFruit(draft)
+    this.fruitsService.createFruit(draft as Fruit)
   }
 }

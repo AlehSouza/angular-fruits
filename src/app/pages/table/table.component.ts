@@ -28,12 +28,12 @@ export class TableComponent implements OnInit {
   }
 
   toggleModalUpdate(fruit: Fruit) {
-    this.modalUpdate.selectedFruit = fruit
+    this.modalUpdate.fruitForm.patchValue(fruit)
     this.modalUpdate.isOpen = !this.modalUpdate.isOpen
   }
 
   toggleModalDelete(fruit: Fruit) {
-    this.modalDelete.selectedFruit = fruit
+    this.modalDelete.selectedFruit =  JSON.parse(JSON.stringify(fruit))
     this.modalDelete.isOpen = !this.modalDelete.isOpen
   }
 

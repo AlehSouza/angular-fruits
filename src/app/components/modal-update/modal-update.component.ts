@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FruitsService } from '../../services/fruits/fruits.service';
 import { Fruit } from '../../schemas/fruit.schema';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-modal-update',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './modal-update.component.html',
   styleUrl: './modal-update.component.scss'
 })
@@ -18,20 +18,18 @@ export class ModalUpdateComponent implements OnInit {
     private fruitsService: FruitsService
   ) { }
 
+  fruitForm = this.fruitsService.generateForm();
+
   isOpen: boolean = false
 
-  selectedFruit!: Fruit;
-
-  ngOnInit(): void {
-    this.selectedFruit = this.fruitsService.selectedFruit
-  }
+  ngOnInit(): void {}
 
   handleOpen() {
     this.isOpen = !this.isOpen
   }
 
   handleUpdate() {
-    this.fruitsService.updateFruit(this.selectedFruit)
+    this.fruitsService.updateFruit(this.fruitForm.getRawValue() as Fruit)
     this.handleOpen()
   }
 }

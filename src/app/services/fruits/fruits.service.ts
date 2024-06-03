@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Fruit } from '../../schemas/fruit.schema';
+import { Fruit, FruitForm } from '../../schemas/fruit.schema';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -61,21 +62,8 @@ export class FruitsService {
     return this.fruits
   }
 
-  createFruit(fruit: {
-      status: boolean;
-      id: number;
-      name?: string | null | undefined;
-      quantity?: number | null | undefined;
-      weight?: number | null | undefined;
-      value?: number | null | undefined;
-    }) {
-    // Acima não foi utilizado o schema de Fruit, por conta do formControld o angular/core
-    // ele não é fortemente tipado, e mesmo você definindo no formulario q os campos sao obrigatorios
-    // ele ainda considera que o tem pode vir indefinido ou nulo
-    // 🤡
-    // @ts-ignore
+  createFruit(fruit: Fruit) {
     this.fruits.push(fruit)
-    // Acima, mesma situação
   }
 
   deleteFruit(fruit: Fruit) {
@@ -88,5 +76,15 @@ export class FruitsService {
     this.fruits[index] = fruit
   }
 
+  generateForm(): FruitForm {
+    return new FormGroup<any>({
+      id: new FormControl<number>({value: 0, disabled: true}),
+      name: new FormControl<string>('', Validators.required),
+      quantity: new FormControl<number>(0, Validators.required),
+      weight: new FormControl<number>(0, Validators.required),
+      value: new FormControl<number>(0, Validators.required),
+      status: new FormControl<boolean>(true, Validators.required),
+    })
+  }
 
 }
