@@ -28,6 +28,11 @@
     gap: 12px
 }
 
+.end {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 .btn {
     padding: 8px;
     border: 0px;
@@ -44,6 +49,11 @@
     box-sizing: border-box;
     border-radius: 12px;
     cursor: pointer;
+}
+
+.btn:disabled,
+.btn-full:disabled {
+    background-color: gray;
 }
 
 .primary {

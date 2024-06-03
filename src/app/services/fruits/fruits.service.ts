@@ -61,8 +61,21 @@ export class FruitsService {
     return this.fruits
   }
 
-  createFruit(fruit: Fruit) {
-    console.log('create Fruit')
+  createFruit(fruit: {
+      status: boolean;
+      id: number;
+      name?: string | null | undefined;
+      quantity?: number | null | undefined;
+      weight?: number | null | undefined;
+      value?: number | null | undefined;
+    }) {
+    // Acima não foi utilizado o schema de Fruit, por conta do formControld o angular/core
+    // ele não é fortemente tipado, e mesmo você definindo no formulario q os campos sao obrigatorios
+    // ele ainda considera que o tem pode vir indefinido ou nulo
+    // 🤡
+    // @ts-ignore
+    this.fruits.push(fruit)
+    // Acima, mesma situação
   }
 
   deleteFruit(fruit: Fruit) {

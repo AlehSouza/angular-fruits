@@ -1,0 +1,21 @@
+@if(isOpen){
+    <div class="modal-content">
+        <form class="modal-box" [formGroup]="fruitForm" (ngSubmit)="handleCreate()">
+                <div class="btn-close">
+                    <button (click)="handleOpen()">X</button>
+                </div>
+                <h1>Adicionando 🍏</h1>
+                <label>Fruta</label>
+                <input type="text" class="input" formControlName="name" placeholder="Ex: Avocado">
+                <label>Quantidade</label>
+                <input type="number" class="input" formControlName="quantity" placeholder="Ex: 10">
+                <label>Peso</label>
+                <input type="number" class="input" formControlName="weight" placeholder="Ex: 200">
+                <label>Valor</label>
+                <input type="number" class="input" formControlName="value" placeholder="Ex: 5">
+                <button class="btn-full primary" (click)="handleCreate()" [disabled]="!fruitForm.valid">
+                    Cadastrar
+                </button>
+        </form>
+    </div>  
+}

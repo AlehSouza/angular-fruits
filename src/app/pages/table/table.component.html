@@ -1,7 +1,11 @@
 <div class="content">
     <app-modal-update #modalUpdate></app-modal-update>
+    <app-modal-create #modalCreate></app-modal-create>
     <app-modal-delete #modalDelete></app-modal-delete>
     <h1 class="title">Frutas na tabela, by params</h1>
+    <div class="content flex group end">
+        <button class="btn primary" (click)="toggleModalCreate($event)">Adicionar</button>
+    </div>
     <app-table-fruits 
         (toggleModalUpdateEmitter)="toggleModalUpdate($event)" 
         (toggleModalDeleteEmitter)="toggleModalDelete($event)"
