@@ -1,0 +1,32 @@
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Cep</th>
+        <th>UF</th>
+        <th>Telefone</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        @if(sellers.length > 0) {
+            @for (seller of sellers; track $index) {
+                <tr>
+                    <td>{{seller.name}}</td>
+                    <td>{{seller.age}}</td>
+                    <td>{{seller.address.cep}}</td>
+                    <td>{{seller.address.uf}}</td>
+                    <td>{{seller.phone[0].number}}</td>
+                    <td>
+                        <button class="btn info">Mais</button>
+                    </td>
+                </tr>
+            }
+        }@else {
+            <tr>
+                <td colspan="6">
+                    <p class="data-off">Sem dados cadastrados.</p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
