@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FruitComponent } from '../../components/fruit/fruit.component';
 import { CommonModule } from '@angular/common';
 import { QuantityPipe } from "../../pipes/quantity.pipe";
 import { TableFruitsComponent } from '../../components/table-fruits/table-fruits.component';
 import { NavigationComponent } from '../../components/navigation/navigation.component';
-import { FruitsService } from '../../services/fruits/fruits.service';
-import { Fruit } from '../../schemas/fruit.schema';
-import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-home',
@@ -15,31 +13,22 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } fr
     styleUrl: './home.component.scss',
     imports: [FruitComponent, QuantityPipe,CommonModule, TableFruitsComponent, NavigationComponent, ReactiveFormsModule]
 })
-export class HomeComponent implements OnInit {
-
-    constructor(
-        private fruitsService: FruitsService
-    ) {}
-
+export class HomeComponent {
     currentDate: Date = new Date()
-
-    fruits!: Fruit[];
     
-    exampleFormArray = new FormGroup({
-        aliases: new FormArray<FormControl<string>>([], [Validators.required]),
-        chips: new FormControl<string[]>(['12398123', 'askjdasd;kj']),
-    });
+    // exampleFormArray = new FormGroup({
+    //     aliases: new FormArray<FormControl<string>>([], [Validators.required]),
+    //     chips: new FormControl<string[]>(['12398123', 'askjdasd;kj']),
+    // });
 
-    ngOnInit(): void {
-        this.fruits = this.fruitsService.getFruits();
+    // ngOnInit(): void {
+    //     ['12398123', 'askjdasd;kj'].forEach((element: string) => {
+    //         this.exampleFormArray.controls.aliases.push(new FormControl(element) as any)
+    //     });
+    // }
 
-        ['12398123', 'askjdasd;kj'].forEach((element: string) => {
-            this.exampleFormArray.controls.aliases.push(new FormControl(element) as any)
-        });
-    }
-
-    addAlias() {
-        const fc: any = new FormControl<string>('', []);
-        this.exampleFormArray.controls.aliases.push(fc)
-    }
+    // addAlias() {
+    //     const fc: any = new FormControl<string>('', []);
+    //     this.exampleFormArray.controls.aliases.push(fc)
+    // }
 }

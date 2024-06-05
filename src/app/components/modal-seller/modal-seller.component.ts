@@ -19,7 +19,6 @@ export class ModalSellerComponent {
     handleSelectSeller(seller: Seller){
       this.toggleModalInfoEmitter.emit(seller)
       this.selectedSeller = seller
-      console.log(seller)
     }
 
     handleOpen() {
