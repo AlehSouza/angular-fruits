@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Seller } from "../../schemas/seller.schema";
+import { PhoneForm, Seller, SellerForm } from "../../schemas/seller.schema";
+import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Injectable({
   providedIn: "root"
@@ -17,10 +18,26 @@ export class SellerService {
         cep: "08150020",
         street: "Rua Jose Pessota",
         number: "100",
-        bairro: "Pq Santa Rita",
+        neighborhood: "Pq Santa Rita",
         uf: "SP"
       },
-      phone: [
+      phones: [
+        {
+          owner: "Ale",
+          number: "11 983674446"
+        },
+        {
+          owner: "Ale2",
+          number: "11 983674446"
+        },
+        {
+          owner: "Ale3",
+          number: "11 983674446"
+        },
+        {
+          owner: "Ale4",
+          number: "11 983674446"
+        },
         {
           owner: "Ale",
           number: "11 983674446"
@@ -35,14 +52,42 @@ export class SellerService {
         cep: "04571010",
         street: "Avenida Engenheiro Luís Carlos Berrini",
         number: "100",
-        bairro: "Itaim Bibi",
+        neighborhood: "Itaim Bibi",
         uf: "SP"
       },
-      phone: [
+      phones: [
         {
-          owner: "Marcela",
-          number: "11 987654321"
-        }
+          owner: "Ale",
+          number: "11 983674446"
+        },
+        {
+          owner: "Ale2",
+          number: "11 983674446"
+        },
+        {
+          owner: "Ale3",
+          number: "11 983674446"
+        },
+        {
+          owner: "Ale4",
+          number: "11 983674446"
+        },
+        {
+          owner: "Ale",
+          number: "11 983674446"
+        },
+        {
+          owner: "Ale2",
+          number: "11 983674446"
+        },
+        {
+          owner: "Ale3",
+          number: "11 983674446"
+        },
+        {
+          owner: "Ale4",
+          number: "11 983674446"
+        },
       ]
     },
     {
@@ -53,10 +98,10 @@ export class SellerService {
         cep: "01452000",
         street: "Rua Oscar Freire",
         number: "100",
-        bairro: "Jardins",
+        neighborhood: "Jardins",
         uf: "SP"
       },
-      phone: [
+      phones: [
         {
           owner: "Carlos",
           number: "11 991234567"
@@ -71,10 +116,10 @@ export class SellerService {
         cep: "01311000",
         street: "Avenida Paulista",
         number: "100",
-        bairro: "Bela Vista",
+        neighborhood: "Bela Vista",
         uf: "SP"
       },
-      phone: [
+      phones: [
         {
           owner: "Sophia",
           number: "11 981122334"
@@ -89,10 +134,10 @@ export class SellerService {
         cep: "05425020",
         street: "Rua dos Pinheiros",
         number: "100",
-        bairro: "Pinheiros",
+        neighborhood: "Pinheiros",
         uf: "SP"
       },
-      phone: [
+      phones: [
         {
           owner: "Lucas",
           number: "11 999887766"
@@ -103,5 +148,41 @@ export class SellerService {
 
   getSellers() {
     return this.sellers
+  }
+
+  getSellersById(id: number) {
+    let seller = this.sellers.find((seller) => seller.id === id)
+    return seller as Seller
+  }
+
+  generateForm(): SellerForm {
+    return new FormGroup<any>({
+      id: new FormControl<number>({value: 0, disabled: true}),
+      name: new FormControl<string>('', Validators.required),
+      age: new FormControl<string>('', Validators.required),
+      address: this.generateAddress(),
+      phones: this.generatePhonesForm()
+    })
+  }
+
+  generateAddress(){
+    return new FormGroup<any>({
+      cep: new FormControl<string>(''),
+      street: new FormControl<string>(''),
+      number: new FormControl<string>(''),
+      neighborhood: new FormControl<string>(''),
+      uf: new FormControl<string>(''),
+    })
+  }
+
+  generatePhonesForm() {
+    return new FormArray<PhoneForm>([])
+  }
+
+  generatePhoneForm(): PhoneForm{
+    return new FormGroup<any>({
+      owner: new FormControl<string>(''),
+      number: new FormControl<string>(''),
+    })
   }
 }

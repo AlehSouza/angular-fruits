@@ -1,0 +1,45 @@
+<div class="content flex group">
+
+    <div class="left">
+        <div class="flex column group box">
+            <h1 class="title">Editando {{seller?.name}} ☂️</h1>
+            <input type="text" class="input" [formControl]="sellerForm.controls.id">
+            <input type="text" class="input" [formControl]="sellerForm.controls.name">
+            <input type="text" class="input" [formControl]="sellerForm.controls.age">
+            <input type="text" class="input" [formControl]="sellerForm.controls.name">
+            <button class="btn-full primary">Atualizar</button>
+        </div>
+    
+        <div class="flex column group box">
+            <h1 class="title">Editando Endereço 🛣️</h1>
+            <input type="text" class="input" [formControl]="sellerForm.controls.address.controls.cep">
+            <input type="text" class="input" [formControl]="sellerForm.controls.address.controls.street">
+            <input type="text" class="input" [formControl]="sellerForm.controls.address.controls.neighborhood">
+            <input type="text" class="input" [formControl]="sellerForm.controls.address.controls.number">
+            <input type="text" class="input" [formControl]="sellerForm.controls.address.controls.uf">
+            <button class="btn-full primary">Atualizar</button>
+        </div>
+    </div>
+
+    <div class="right">
+        <div class="flex column group box">
+            <h1 class="title">Editando Phones 📞</h1>
+            <button class="btn-full primary" (click)="handleAddPhone(emptyPhone)">Add 📞</button>
+            @for (phone of sellerForm.controls.phones.controls; track phone) {
+                <div class="full mt-10">
+                    <h4>Contato {{$index}}</h4>
+                    <div class="flex full group">
+                        <div class="flex column group full">
+                            <input type="text" class="input full" [formControl]="phone.controls.owner">
+                            <input type="text" class="input full" [formControl]="phone.controls.number">
+                        </div>
+                        <div class="flex column group">
+                            <button class="btn-full info" (click)="handleUpdatePhone($index, phone)">Atualizar</button>
+                            <button class="btn-full danger" (click)="handleRemovePhone($index)">Remover</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

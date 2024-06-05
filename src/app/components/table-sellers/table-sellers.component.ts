@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SellerService } from '../../services/seller/seller.service';
 import { Seller } from '../../schemas/seller.schema';
 
@@ -13,7 +13,13 @@ export class TableSellersComponent implements OnInit {
 
   @Input() sellers!: Seller[]
 
+  @Output() toggleModalInfoEmitter = new EventEmitter<Seller>()
+
   ngOnInit(): void {
+  }
+
+  handleInfoSeller(seller: Seller) {
+    this.toggleModalInfoEmitter.emit(seller)
   }
 
 }

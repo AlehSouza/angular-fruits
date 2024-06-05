@@ -5,11 +5,13 @@ import { TableComponent } from './pages/table/table.component';
 import { JsonComponent } from './pages/json/json.component';
 import { ParamsComponent } from './pages/params/params.component';
 import { SellersComponent } from './pages/sellers/sellers.component';
+import { EditComponent } from './pages/sellers/edit/edit.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'table', component: TableComponent },
     { path: 'sellers', component: SellersComponent},
+    { path: 'sellers/edit/:id', component: EditComponent},
     { path: 'params', component: ParamsComponent},
     { path: 'json', component: JsonComponent },
     { path: '404', component: NotFoundComponent},

@@ -1,4 +1,7 @@
 <div class="content">
+    <app-modal-seller #modalSeller />
     <h1 class="title">Sellers by params</h1>
-    <app-table-sellers [sellers]="sellers"/>
+    <app-table-sellers 
+        (toggleModalInfoEmitter)="toggleInfoSeller($event)"
+        [sellers]="sellers"/>
 </div>

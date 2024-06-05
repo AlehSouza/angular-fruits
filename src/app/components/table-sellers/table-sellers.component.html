@@ -15,9 +15,9 @@
                     <td>{{seller.age}}</td>
                     <td>{{seller.address.cep}}</td>
                     <td>{{seller.address.uf}}</td>
-                    <td>{{seller.phone[0].number}}</td>
+                    <td>{{seller.phones[0].number}}</td>
                     <td>
-                        <button class="btn info">Mais</button>
+                        <button class="btn info" (click)="handleInfoSeller(seller)">Ver mais</button>
                     </td>
                 </tr>
             }

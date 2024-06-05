@@ -19,7 +19,6 @@ export class ModalUpdateComponent implements OnInit {
   ) { }
 
   fruitForm = this.fruitsService.generateForm();
-
   isOpen: boolean = false
 
   ngOnInit(): void {}

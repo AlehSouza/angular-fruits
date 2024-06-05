@@ -1,0 +1,22 @@
+@if(isOpen){
+    <div class="modal-content">
+        <div class="modal-box">
+            <div class="btn-close">
+                <button (click)="handleOpen()">X</button>
+            </div>
+            <h1>{{selectedSeller.name}} ☔️</h1>
+            <label for="">Nome</label>
+            <label for="">{{selectedSeller.name}}</label>
+            <label for="">Telefone</label>
+            <label for="">{{selectedSeller.phones[0].number}}</label>
+            <label for="">Cep</label>
+            <label for="">{{selectedSeller.address.cep}}</label>
+            <br>
+            <a [routerLink]="['/sellers/edit', selectedSeller.id]">
+                <button class="btn-full info">
+                    Editar
+                </button>
+            </a>
+        </div>
+    </div>  
+}
